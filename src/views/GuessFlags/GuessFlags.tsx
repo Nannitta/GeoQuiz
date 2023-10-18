@@ -11,13 +11,13 @@ const GuessFlags = () => {
   
   useEffect(() => {
     setRandomCountry(Math.floor(Math.random() * 249));
-  }, []);
+  }, [points]);
 
   if (error) return <p>{error.message}</p>;
   if (loading) return <p>Cargando...</p>;
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const countryAnswer = event.currentTarget.value;
+    const countryAnswer: string = event.currentTarget.value;
     setUserAnswer(countryAnswer);
   }
 
@@ -25,13 +25,17 @@ const GuessFlags = () => {
     event.preventDefault();
     if (countries) {
       if (userAnswer === countries[randomCountry].name) {
-        const newPoints = points + 1;
+        const newPoints: number = points + 1;
         setPoints(newPoints);
-        setRandomCountry(Math.floor(Math.random() * 249));
-        const formValue = document.querySelector('form');
-        formValue?.reset();
       }
+      const formValue = document.querySelector('form');
+      formValue?.reset();
     }
+  }
+
+  const handleSurrender = () => {
+    setPoints(0);
+    setRandomCountry(Math.floor(Math.random() * 249));
   }
 
   return (
@@ -52,8 +56,11 @@ const GuessFlags = () => {
         <Input type={'text'} placeholder={'Escribe aquí el país'} text={'country'} handleChange={handleChange}/>
         <SendButton/>
       </form>
-      <p>Puntuación</p>
-      <span>{`${points} / 250`}</span>
+      <div>
+        <p>Puntuación</p>
+        <span>{`${points} / 250`}</span>
+      </div>
+      <button onClick={handleSurrender}>Rendirse</button>
     </main>
   )
 };

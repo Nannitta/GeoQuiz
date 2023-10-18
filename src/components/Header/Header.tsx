@@ -1,10 +1,12 @@
+import { NavLink } from 'react-router-dom';
+
 const Header = () => {
   return (
     <header>
-      <img src="" alt="Logo" />
+      <NavLink to='/'><img src="" alt="Logo" /></NavLink>
       <nav>
-        <a href="">Banderas</a>
-        <a href="">Capitales</a>
+        <NavLink to="/adivina-la-bandera">Banderas</NavLink>
+        <NavLink to='/adivina-la-capital'>Capitales</NavLink>
         <a href="">Continentes</a>
       </nav>
       <button>Más Info</button>

@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
-import { getCountryAndFlag } from '../services/index';
-import { CountriesWithFlag } from '../types/types';
+import { CountriesWithCapital } from '../types/types';
+import { getCountryCapital } from '../services';
 
-const useGuessFlags = () => {
-  const [countries, setCountries] = useState<CountriesWithFlag>();
+const useGuessCapitals = () => {
+  const [countries, setCountries]  = useState<CountriesWithCapital>()
   const [error, setError] = useState<Error>();
   const [loading, setLoading] = useState<Boolean>(false);
 
@@ -11,20 +11,20 @@ const useGuessFlags = () => {
     const loadCountries = async () => {
       try {
         setLoading(true);
-        
-        const data: CountriesWithFlag = await getCountryAndFlag();
+    
+        const data: CountriesWithCapital = await getCountryCapital();
         setCountries(data);
       } catch (err) {
         setError(error);
       } finally {
         setLoading(false);
       }
-    };
+    }
 
     loadCountries();
-  }, []);
+  }, [])
 
   return { countries, error, loading };
-};
+}
 
-export default useGuessFlags;
+export default useGuessCapitals;
