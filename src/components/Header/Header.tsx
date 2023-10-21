@@ -7,7 +7,7 @@ const Header = () => {
       <nav>
         <NavLink to="/adivina-la-bandera">Banderas</NavLink>
         <NavLink to='/adivina-la-capital'>Capitales</NavLink>
-        <a href="">Continentes</a>
+        <NavLink to="/adivina-el-continente">Continentes</NavLink>
       </nav>
       <button>Más Info</button>
     </header>

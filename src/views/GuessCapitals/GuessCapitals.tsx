@@ -10,7 +10,7 @@ const GuessCapitals = () => {
   const [randomCountry, setRandomCountry] = useState<number>(0);
 
   useEffect(() => {
-    setRandomCountry(Math.floor(Math.random() * 249));
+    setRandomCountry(Math.round(Math.random() * 249));
   }, [points]);
 
   if (error) return <p>{error.message}</p>
