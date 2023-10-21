@@ -12,7 +12,9 @@
     "dependencies": {
         "react": "18.2.0",
         "react-dom": "18.2.0",
-        "react-router-dom": "6.17.0"
+        "react-router-dom": "6.17.0",
+        "@babel/traverse": ">=7.23.2",
+        "postcss": ">=8.4.31"
     },
     "devDependencies": {
         "@types/react": "18.2.15",

@@ -2,6 +2,7 @@ import Header from './components/Header/Header';
 import HomePage from './views/HomePage/HomePage';
 import GuessFlags from './views/GuessFlags/GuessFlags';
 import GuessCapitals from './views/GuessCapitals/GuessCapitals';
+import GuessContinent from './views/GuessContinent/GuessContinent';
 import Footer from './components/Footer/Footer';
 import { Routes, Route } from 'react-router-dom';
 
@@ -13,6 +14,7 @@ function App () {
         <Route path='/' element={<HomePage/>}/>
         <Route path='/adivina-la-bandera' element={<GuessFlags/>}/>
         <Route path='/adivina-la-capital' element={<GuessCapitals/>}/>
+        <Route path='/adivina-el-continente' element={<GuessContinent/>}/>
       </Routes>
       <Footer/>
     </>

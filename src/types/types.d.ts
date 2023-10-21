@@ -1,10 +1,5 @@
 export type API = string
 
-export type FlagCountry = {
-  flags: Flag
-  translations: Translations
-}
-
 type Flag = {
   alt: string
   png: string
@@ -19,13 +14,17 @@ type CountryName = {
   common: string
 }
 
+export type FlagCountry = {
+  flags: Flag
+  translations: Translations
+}
+
 type FlagCountryFetch = {
   flag: string
   name: string
 }
 
 export type CountriesWithFlag = FlagCountryFetch[]
-
 
 export type CapitalCountry = {
   flags: Flag
@@ -40,3 +39,17 @@ type CapitalCountryFecth = {
 }
 
 export type CountriesWithCapital = CapitalCountryFecth[]
+
+export type ContinentCountry = {
+  translations: Translations
+  region: string
+  subregion: string | null
+}
+
+type ContinentCountryFetch = {
+  name: string
+  region: string
+  subregion: string | null
+}
+
+export type CountriesWithContinent = ContinentCountryFetch[]
