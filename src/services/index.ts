@@ -41,12 +41,9 @@ export const getContinent = async () => {
   const countries = data.filter((country: ContinentCountry) => country.region !== 'Antarctic').map((country: ContinentCountry) => {
     return {
       name: country.translations.spa.common.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase(),
-      continent: country.region === 'Americas' ? country.subregion === 'Caribbean' ? 'South America' : country.subregion : country.region
+      continent: country.region === 'Americas' ? (country.subregion === 'Caribbean' ? 'South America' : country.subregion || country.subregion === 'Central America' ? 'North America' : country.subregion) : country.region
     }
   })
-
-  console.log(countries);
   
- 
   return countries;
 }

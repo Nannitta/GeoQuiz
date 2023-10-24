@@ -43,13 +43,12 @@ export type CountriesWithCapital = CapitalCountryFecth[]
 export type ContinentCountry = {
   translations: Translations
   region: string
-  subregion: string | null
+  subregion: string
 }
 
 type ContinentCountryFetch = {
   name: string
-  region: string
-  subregion: string | null
+  continent: string
 }
 
 export type CountriesWithContinent = ContinentCountryFetch[]
