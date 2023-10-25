@@ -1,5 +1,5 @@
 import { MouseEventHandler } from 'react';
 
 export type MapProps = {
-  changeColor: MouseEventHandler<SVGGElement>
+  handleAnswer: MouseEventHandler<SVGGElement>
 }
