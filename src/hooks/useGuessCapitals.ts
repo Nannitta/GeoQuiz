@@ -3,9 +3,9 @@ import { CountriesWithCapital } from '../types/types';
 import { getCountryCapital } from '../services';
 
 const useGuessCapitals = () => {
-  const [countries, setCountries]  = useState<CountriesWithCapital>()
+  const [countries, setCountries] = useState<CountriesWithCapital>();
   const [error, setError] = useState<Error>();
-  const [loading, setLoading] = useState<Boolean>(false);
+  const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
     const loadCountries = async () => {
@@ -19,12 +19,12 @@ const useGuessCapitals = () => {
       } finally {
         setLoading(false);
       }
-    }
+    };
 
     loadCountries();
-  }, [])
+  }, []);
 
   return { countries, error, loading };
-}
+};
 
 export default useGuessCapitals;

@@ -4,7 +4,7 @@ const Footer = () => {
       <img src="" alt="GitHub" />
       <a href="">GitHub</a>
     </footer>
-  )
+  );
 };
 
 export default Footer;

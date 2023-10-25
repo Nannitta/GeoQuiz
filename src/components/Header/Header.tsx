@@ -11,7 +11,7 @@ const Header = () => {
       </nav>
       <button>Más Info</button>
     </header>
-  )
+  );
 };
 
 export default Header;

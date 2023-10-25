@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { MouseEvent, useEffect, useState } from 'react';
 import useGuessContinent from '../../hooks/useGuessContinent';
 import Map from './Map/Maps';
 
@@ -10,7 +10,7 @@ const GuessContinent = () => {
 
   useEffect(() => {
     setRandomCountry(Math.round(Math.random() * 245));
-  }, [points])
+  }, [points]);
    
   useEffect(() => {
     const checkIsCorrect = (): void => {
@@ -24,16 +24,17 @@ const GuessContinent = () => {
           setUserAnswer('');
         }
       }
-    }
+    };
 
     checkIsCorrect();
   }, [userAnswer]);
 
-  if (error) return <p>{error.message}</p>
-  if (loading) return <p>Cargando...</p> 
+  if (error) return <p>{error.message}</p>;
+  if (loading) return <p>Cargando...</p>; 
 
-  function handleAnswer (event: any): void {
-    const idPath: string = event.target.classList.value;
+  function handleAnswer (event: MouseEvent<SVGGElement>) {
+    const target = event.target as SVGGElement; 
+    const idPath: string = target.classList.value;
     setUserAnswer(idPath);   
   }
   
@@ -43,7 +44,7 @@ const GuessContinent = () => {
         countries
           ? countries.map((country, index) => {
             if(index === randomCountry) {
-              return <h1 key={index}>¿En qué continente de encuentra {country.name.toLocaleUpperCase()}?</h1>
+              return <h1 key={index}>¿En qué continente de encuentra {country.name.toLocaleUpperCase()}?</h1>;
             }
           })
           : null
@@ -54,7 +55,7 @@ const GuessContinent = () => {
         <span>{`${points} / 245`}</span>
       </div>
     </main>
-  )
+  );
 };
 
 export default GuessContinent;

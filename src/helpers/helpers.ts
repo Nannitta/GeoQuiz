@@ -11,7 +11,7 @@ const filterContinent = (country: ContinentCountry) => {
     }
 
   } else {
-    return country.region
+    return country.region;
   }
 };
 

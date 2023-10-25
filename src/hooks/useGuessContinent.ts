@@ -5,7 +5,7 @@ import { getContinent } from '../services';
 const useGuessContinent = () => {
   const [countries, setCountries] = useState<CountriesWithContinent>();
   const [error, setError] = useState<Error>();
-  const [loading, setLoading] = useState<Boolean>(false);
+  const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
     
@@ -20,12 +20,12 @@ const useGuessContinent = () => {
       } finally {
         setLoading(false);
       }
-    }
+    };
 
     loadCountries();
-  }, [])
+  }, []);
 
   return { countries, error, loading };
-}
+};
 
 export default useGuessContinent;

@@ -16,7 +16,7 @@ export const getCountryAndFlag = async () => {
     return {
       flag: country.flags.svg,
       name: country.translations.spa.common.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase()
-    }
+    };
   });
   
   return countries;
@@ -36,11 +36,11 @@ export const getCountryCapital = async () => {
       flag: country.flags.svg,
       name: country.translations.spa.common.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase(),
       capital: country.capital
-    }
-  })
+    };
+  });
 
   return countries;
-}
+};
 
 export const getContinent = async () => {
   const response = await fetch(`${API_URL}all?fields=name,translations,region,subregion`);
@@ -55,8 +55,8 @@ export const getContinent = async () => {
     return {
       name: country.translations.spa.common.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase(),
       continent: filterContinent(country)
-    }
-  })
+    };
+  });
   
   return countries;
-}
+};
