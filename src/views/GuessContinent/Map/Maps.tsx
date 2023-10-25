@@ -1,13 +1,13 @@
 import './map.css';
 import { MapProps } from './types';
 
-const Map = ({ changeColor }: MapProps) => {
+const Map = ({ handleAnswer }: MapProps) => {
   return (
 		<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
-			width="1200px" height="1200px" viewBox="0 0 1200 1200">
+			width="1000px" height="1000px" viewBox="0 0 1200 1200">
 		<g>
 			<g>
-				<g className='hover-map' id='Asia' onClick={changeColor}>
+				<g className='hover-map' id='Asia' onClick={handleAnswer}>
 					<path className='Asia' fill="#E0E0E0" stroke="white" d="M1145.97,437.996c-5.124-1.505-3.313-1.505-5.124-2.704c-1.801-1.209-1.801,3.906-2.702,4.214
 						c-0.91,0.303-2.697-0.602-2.697-4.214c0-3.607-1.82-1.209-3.019-2.104c-1.19-0.896-3.304-3-6.01-3.612
 						c-2.702-0.602-6.313-3.901-10.527-6.008c-4.219-2.109-8.134-3.311-12.343-2.704c-4.209,0.595-7.214-0.91-12.029-1.818
@@ -218,7 +218,7 @@ const Map = ({ changeColor }: MapProps) => {
 						"/>
 				</g>
 
-				<g className='hover-map' id='South America' onClick={changeColor}>
+				<g className='hover-map' id='South America' onClick={handleAnswer}>
 					<path className='South America' fill="#E0E0E0" stroke="white" d="M323.606,653.817c0,0,4.007,4.007,3.617,8.018c-0.421,4.016,2.391,6.424-0.421,8.832
 						c-2.8,2.408-7.214,6.41-8.011,9.224c-0.809,2.812-2.812,7.614-0.405,8.432c2.403,0.79-4.811,3.195-2.408,7.211
 						c2.408,3.999,4.811,6.81,6.814,11.221c2.003,4.421,7.633,13.241,8.432,16.855c0.799,3.604,2.408,3.604,6.41,6.017
@@ -242,7 +242,7 @@ const Map = ({ changeColor }: MapProps) => {
 						c-3.2,2.013-9.22,3.626-11.228,6.02c-1.999,2.422-2.81,7.233-6.422,5.63C322.792,651.014,322.402,652.216,323.606,653.817z"/>
 				</g>
 
-				<g className='hover-map' id='North America' onClick={changeColor}>
+				<g className='hover-map' id='North America' onClick={handleAnswer}>
 					<path className='North America' fill="#E0E0E0" stroke="white" d="M53.563,424.09c0,0,2.715-2.403,5.731-2.099c2.995,0.294,6.01-2.104,7.502-4.216
 						c1.513-2.097,5.419-4.813,7.825-4.813c2.402,0,8.128-2.401,10.536-3.005c2.406-0.599,4.812,0.604,4.812,0.604
 						s-4.812,2.107-3.612,2.401c1.206,0.308,7.806-1.204,8.716-1.204c0.907,0,4.821,3.019,8.14,2.408c3.287-0.597,8.408,0,9.311,0
@@ -550,7 +550,7 @@ const Map = ({ changeColor }: MapProps) => {
 							c-1.397,0.39-2.413,0.99-3.612,0.99C218.109,367.436,217.112,366.447,217.112,366.447z"/>
 				</g>
 
-				<g className='hover-map' id='Oceania' onClick={changeColor}>
+				<g className='hover-map' id='Oceania' onClick={handleAnswer}>
 					<path className='Oceania' fill="#E0E0E0" stroke="white" d="M912.805,763.311c0,0,1.993-2.391,0.395-4.401c-1.608-2.008-0.804-3.217,0.4-6.429
 						c1.199-3.195,3.222-1.197,4.421-3.195c1.209-2.02,2.408-4.816,6.01-4.816c3.612,0,6.434,0.811,8.827-1.594
 						c2.408-2.425,6.01-1.221,6.414-4.026c0.409-2.803-0.809-5.61,2.003-6.809c2.803-1.214,1.199,4.799,3.612,2.403
@@ -603,7 +603,7 @@ const Map = ({ changeColor }: MapProps) => {
 					<path className='Oceania' fill="#E0E0E0" stroke="white" d="M662.424,580.823c0,0-0.279,0.205-0.664,0.522l3.169-0.522H662.424z"/>
 				</g>
 				
-				<g className='hover-map' id='Europe' onClick={changeColor}>
+				<g className='hover-map' id='Europe' onClick={handleAnswer}>
 					<path className='Europe' fill="#E0E0E0" stroke="white" d="M536.377,497.797c0,0-2.699-4.211-1.209-4.211c1.512,0,4.522,0.595,4.522-0.905
 						c0-1.507-0.313-3.01,2.109-3.01c2.398,0,4.806,0.6,5.105,1.503c0.303,0.903,1.507,2.413,0.303,5.126
 						c-1.199,2.699-2.403,2.699-1.803,4.801c0.604,2.102,1.202,3.609-1.51,3.609c-2.702,0-4.204-2.109-5.403-0.898
@@ -696,7 +696,7 @@ const Map = ({ changeColor }: MapProps) => {
 						c-5.418,4.216-10.402,7.883-11.519,8.452c0,0-4.801-0.891-5.923-2.413"/>
 				</g>
 
-				<g className='hover-map' id='Africa' onClick={changeColor}>
+				<g className='hover-map' id='Africa' onClick={handleAnswer}>
 					<path className='Africa' fill="#E0E0E0" stroke="white" d="M721.074,644.995c-1.204-0.802-2.798-0.802-5.615,1.197c-2.798,2.006-7.614,1.206-10.021,0.802
 						c-2.398-0.39-4.416,1.204-8.023-1.594c-3.607-2.812-0.404-5.622-4.007-7.623c-3.607-1.994-4.806-3.207-6.424-6.419
 						c-1.609-3.207-2.798-4.413-5.201-6.015c-2.418-1.609-3.222-4.009-4.426-10.431c-1.204-6.412-5.601-14.837-8.009-18.047

@@ -7,58 +7,48 @@ const GuessContinent = () => {
   const [randomCountry, setRandomCountry] = useState<number>(0);
   const [points, setPoints] = useState<number>(0);
   const [userAnswer, setUserAnswer] = useState<string>();
-  const [color, setColor] = useState<string>('#E0E0E0');
 
   useEffect(() => {
-    setRandomCountry(Math.round(Math.random() * 249));
+    setRandomCountry(Math.round(Math.random() * 245));
   }, [points])
    
+  useEffect(() => {
+    const checkIsCorrect = (): void => {
+      if (countries && userAnswer) {   
+        if (userAnswer === countries[randomCountry].continent) {
+          const newPoints: number = points + 1;
+          setPoints(newPoints);
+          setUserAnswer('');
+        } else {
+          setPoints(0);
+          setUserAnswer('');
+        }
+      }
+    }
+
+    checkIsCorrect();
+  }, [userAnswer]);
+
   if (error) return <p>{error.message}</p>
   if (loading) return <p>Cargando...</p> 
 
-  function changeColor (event: any) {
-		const idPath: string = event.target.classList.value;
-					
-		const groupSvg = document.querySelectorAll(`.${idPath}`);
-
-		groupSvg.forEach((path: Element) => {
-			if (path instanceof SVGElement) {
-				if (path instanceof SVGElement) {
-					if (path.style.fill !== 'green') {
-            path.style.fill = color;
-          } else {
-            setColor('green');
-            path.style.fill = color;
-          }
-				}
-			}
-		})
-
-    setUserAnswer(idPath);
-	}
-  
-  if (countries) {  
-    console.log(countries[randomCountry], 'API');
-    console.log(userAnswer);
-    if (userAnswer === countries[randomCountry].continent) {
-      const newPoints = points + 1;
-      setPoints(newPoints);
-      setUserAnswer('');
-    }
+  function handleAnswer (event: any): void {
+    const idPath: string = event.target.classList.value;
+    setUserAnswer(idPath);   
   }
-
+  
   return (
     <main>
       {
         countries
           ? countries.map((country, index) => {
-            if( index === randomCountry) {
+            if(index === randomCountry) {
               return <h1 key={index}>¿En qué continente de encuentra {country.name.toLocaleUpperCase()}?</h1>
             }
           })
           : null
       }
-      <Map changeColor={changeColor}/>
+      <Map handleAnswer={handleAnswer}/>
       <div>
         <p>Puntuación</p>
         <span>{`${points} / 245`}</span>
