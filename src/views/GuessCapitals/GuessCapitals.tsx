@@ -13,30 +13,30 @@ const GuessCapitals = () => {
     setRandomCountry(Math.round(Math.random() * 249));
   }, [points]);
 
-  if (error) return <p>{error.message}</p>
-  if (loading) return <p>Cargando...</p>
+  if (error) return <p>{error.message}</p>;
+  if (loading) return <p>Cargando...</p>;
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const capitalAnswer = event.currentTarget.value;
     setUserAnswer(capitalAnswer);
-  }
+  };
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (countries) {
-       if (userAnswer === countries[randomCountry].capital[0].normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase()) {
+      if (userAnswer === countries[randomCountry].capital[0].normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase()) {
         const newPoints: number = points + 1;
         setPoints(newPoints);
       }
     }
     const formValue = document.querySelector('form');
     formValue?.reset();
-  }
+  };
 
   const handleSurrender = () => {
     setPoints(0);
     setRandomCountry(Math.floor(Math.random() * 249));
-  }
+  };
 
   return (
     <main>
@@ -44,20 +44,20 @@ const GuessCapitals = () => {
         countries
           ? countries.map((country, index) => {
             if (index === randomCountry) {
-              return <h1 key={index}>¿Cuál es la capital de {country.name.toLocaleUpperCase()}?</h1>
+              return <h1 key={index}>¿Cuál es la capital de {country.name.toLocaleUpperCase()}?</h1>;
             }
           })
           : null
       }
       <div>
         {
-            countries
-              ? countries.map((country, index) => {           
-                if (index === randomCountry) {         
-                  return <img src={country.flag} alt={country.name} key={index}/>
-                }          
-              })
-              : null
+          countries
+            ? countries.map((country, index) => {           
+              if (index === randomCountry) {         
+                return <img src={country.flag} alt={country.name} key={index}/>;
+              }          
+            })
+            : null
         }
       </div>
       <form onSubmit={handleSubmit}>
@@ -70,7 +70,7 @@ const GuessCapitals = () => {
       </div>
       <button onClick={handleSurrender}>Rendirse</button>
     </main>
-  )
+  );
 };
 
 export default GuessCapitals;

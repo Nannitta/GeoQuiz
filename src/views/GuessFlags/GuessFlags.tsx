@@ -19,7 +19,7 @@ const GuessFlags = () => {
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const countryAnswer: string = event.currentTarget.value;
     setUserAnswer(countryAnswer);
-  }
+  };
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -31,12 +31,12 @@ const GuessFlags = () => {
       const formValue = document.querySelector('form');
       formValue?.reset();
     }
-  }
+  };
 
   const handleSurrender = () => {
     setPoints(0);
     setRandomCountry(Math.floor(Math.random() * 249));
-  }
+  };
 
   return (
     <main>
@@ -46,7 +46,7 @@ const GuessFlags = () => {
           countries
             ? countries.map((country, index) => {           
               if (index === randomCountry) {         
-                return <img src={country.flag} alt={country.name} key={index}/>
+                return <img src={country.flag} alt={country.name} key={index}/>;
               }          
             })
             : null
@@ -62,7 +62,7 @@ const GuessFlags = () => {
       </div>
       <button onClick={handleSurrender}>Rendirse</button>
     </main>
-  )
+  );
 };
 
 export default GuessFlags;
