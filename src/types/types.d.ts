@@ -69,8 +69,28 @@ export type CountryRelevantInfo = {
   area: number
   population: number
   currencies: object
-  languages: Array<string>
-  flags: Flag
+  languages: CountryLanguages
+  flags: Flags
+  coin: CountryCurrencies
+  maps: Map 
+}
+
+type CountryCurrencies = {
+  [key: string]: Currency
+}
+
+type Currency = {
+  name: string
+  symbol: string
+}
+
+type CountryLanguages = {
+  [key: string]: string
+}
+
+type Map = {
+  googleMaps: string
+  openStreetMaps: string
 }
 
 export type CountryRelevantInfoFetch = CountryRelevantInfo[]
