@@ -9,7 +9,7 @@ const Header = () => {
         <NavLink to='/adivina-la-capital'>Capitales</NavLink>
         <NavLink to="/adivina-el-continente">Continentes</NavLink>
       </nav>
-      <button>Más Info</button>
+      <button><NavLink to="/lista-paises">Más Info</NavLink></button>
     </header>
   );
 };

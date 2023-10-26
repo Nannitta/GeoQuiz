@@ -3,7 +3,7 @@ const SendButton = () => {
     <button>
       <img src="" alt="Enviar" />
     </button>
-  )
+  );
 };
 
 export default SendButton;
