@@ -4,15 +4,13 @@ import { API, CapitalCountry, ContinentCountry, CountriesTranslations, CountryRe
 const API_URL: API = 'https://restcountries.com/v3.1/';
 
 export const translateText = async (pais: string | undefined) => {
-  const response = await fetch('https://es.libretranslate.com/translate', {
+  const response = await fetch('https://api.textcortex.com/v1/texts/translations', {
     method: 'POST',
-    body: JSON.stringify({
-      q: `${pais}`,
-      source: 'es',
-      target: 'en',
-      format: 'text',
-    }),
-    headers: { 'Content-Type': 'application/json' }
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: 'Bearer gAAAAABlOrrzOH7PLGSw5plUrv2PjprQqbVpEwTLq9m5aHfBsA_aOpIYVt59KaSzkx8wJIGFFN2xv8l-mvkh_lAJ09MbkFifJAHX5CgCfV6S8hx4AGAyGSDbaMHfwh-82y3PJ6KQ7EBL'
+    },
+    body: `{"source_lang":"es","target_lang":"en","text":"${pais}"}`
   });
 
   if (!response.ok) {
@@ -21,8 +19,7 @@ export const translateText = async (pais: string | undefined) => {
 
   const data = await response.json();
 
-  console.log(data);
-  return data;
+  return data.data.outputs[0].text;
 };
 
 export const getCountryAndFlag = async () => {
@@ -97,14 +94,12 @@ export const getListNameCountries = async () => {
       name: country.translations.spa.common
     };
   });
-
-  console.log(countries);
   
   return countries;  
 };
 
-export const getCountryInfo = async (name: string) => {
-  const response = await fetch (`${API_URL}name/${name}`);
+export const getCountryInfo = async (countryTranslate: string) => {
+  const response = await fetch (`${API_URL}name/${countryTranslate}`);
 
   if (!response.ok) {
     throw new Error('Error al conectarse con el servidor');
@@ -115,12 +110,13 @@ export const getCountryInfo = async (name: string) => {
   const countryInfo = data.map((country: CountryRelevantInfo) => {
     return {
       capital: country.capital[0],
-      continent: country.region,
+      region: country.region,
       area: country.area,
       population: country.population,
       coin: country.currencies,
       languages: country.languages,
-      flag: country.flags.svg
+      flags: country.flags.svg,
+      maps: country.maps
     };
   });
 

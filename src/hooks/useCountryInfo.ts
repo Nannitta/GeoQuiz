@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import { getCountryInfo } from '../services';
+import { CountryRelevantInfoFetch } from '../types/types';
 
-const useCountryInfo = (name: string | undefined) => {
-  const [country, setCountry] = useState();
+const useCountryInfo = (countryTranslate: string | undefined) => {
+  const [country, setCountry] = useState<CountryRelevantInfoFetch>();
   const [error, setError] = useState<Error>();
   const [loading, setLoading] = useState<boolean>();
 
@@ -11,8 +12,10 @@ const useCountryInfo = (name: string | undefined) => {
       try {
         setLoading(true);
         
-        const data = await getCountryInfo(name);
-        setCountry(data);
+        if (countryTranslate) {
+          const data: CountryRelevantInfoFetch = await getCountryInfo(countryTranslate);
+          setCountry(data);
+        }
       } catch (err) {
         setError(error);
       } finally {
