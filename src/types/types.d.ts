@@ -52,3 +52,25 @@ type ContinentCountryFetch = {
 }
 
 export type CountriesWithContinent = ContinentCountryFetch[]
+
+export type CountriesTranslations = {
+  translations: Translations
+}
+
+type ListCountriesFetch = {
+  name : string
+}
+
+export type ListCountries = ListCountriesFetch[]
+
+export type CountryRelevantInfo = {
+  capital: string
+  region: string
+  area: number
+  population: number
+  currencies: object
+  languages: Array<string>
+  flags: Flag
+}
+
+export type CountryRelevantInfoFetch = CountryRelevantInfo[]
