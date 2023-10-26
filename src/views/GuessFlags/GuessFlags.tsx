@@ -8,8 +8,17 @@ const GuessFlags = () => {
   const [userAnswer, setUserAnswer] = useState<string>();
   const [points, setPoints] = useState<number>(0);
   const [randomCountry, setRandomCountry] = useState<number>(0);
+  const [usedPositions, setUsedPositions] = useState<number[]>([]);
   
   useEffect(() => {
+    if (usedPositions.length === 0) {
+      const allPositions: number[] = Array.from({ length: countries ? countries.length : 0 }, (_, index) => index);
+      const newPositionIndex: number = Math.floor(Math.random() * allPositions.length);
+      const newPosition: number = usedPositions[newPositionIndex];
+
+      setUsedPositions((prevUsedPosition) => prevUsedPosition.filter((position) => position !== newPosition));
+      setRandomCountry(newPosition);
+    }
     setRandomCountry(Math.floor(Math.random() * 249));
   }, [points]);
 
