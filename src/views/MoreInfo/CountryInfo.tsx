@@ -1,37 +1,50 @@
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import Input from '../../components/Input/Input';
 import useCountryInfo from '../../hooks/useCountryInfo';
 import { CountryCurrencies, CountryLanguages } from '../../types/types';
-// import { translateText } from '../../services';
-// import { useEffect, useState } from 'react';
+import { translateText } from '../../services';
+import { useEffect, useState, ChangeEvent, FormEvent } from 'react';
 import SendButton from '../../components/SendButton/SendButton';
+import { verifyTranslate, capitalize } from '../../helpers/helpers';
 
 const CountryInfo = () => {
   const { pais } = useParams();
-  // const [countryTranslate, setCountryTranslate] = useState<string>();
-  const {country, error, loading} = useCountryInfo(pais);
+  const [countryTranslate, setCountryTranslate] = useState<string>();
+  const {country, error, loading} = useCountryInfo(countryTranslate);
+  const navigate = useNavigate();
+  let searchCountry: string = '';
   
-  /*   useEffect(() => {
+  useEffect(() => {
     const loadTranslate = async () => {
       if (pais) {
         const translateData = await translateText(pais);
-        setCountryTranslate(translateData);
+        setCountryTranslate(translateData);     
       }
     };
     
     loadTranslate();
-  }, [pais]); */
+  }, [countryTranslate, pais]);
     
   if (error) return <p>{error.message}</p>;
   if (loading) return <p>Cargando...</p>;
   
-  function handleChange () {
-    //
+  function handleChange (event: ChangeEvent<HTMLInputElement>) {
+    searchCountry = event.currentTarget.value; 
   }
 
+  async function handleSubmit (event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    searchCountry = await translateText(searchCountry);
+    
+    searchCountry = await verifyTranslate(capitalize(searchCountry));
+ 
+    navigate(`/${searchCountry}`);
+  }
+  
   function getCoin (): string | undefined {
     if (country) {
-      const countryDivise: keyof CountryCurrencies = Object.keys(country[0].coin).toString();
+      const countryDivise: keyof CountryCurrencies = Object.keys(country[0].coin).toString().split(',')[0];
+      
       const countryCoin = country[0].coin[countryDivise].name + ' - ' + country[0].coin[countryDivise].symbol;
       return countryCoin;
     }
@@ -50,8 +63,10 @@ const CountryInfo = () => {
 
   return (
     <>
-      <Input type={'text'} placeholder={'Buscador'} text={'pais'} handleChange={handleChange}/>
-      <SendButton/>
+      <form onSubmit={handleSubmit}>
+        <Input type={'text'} placeholder={'Buscador'} text={'pais'} handleChange={handleChange} autocomplete={'on'}/>
+        <SendButton/>
+      </form>
       { country
         ? <article>
           <h1>{pais}</h1>
@@ -70,7 +85,7 @@ const CountryInfo = () => {
               } )}</ul>
           </section>
         </article>
-        : null
+        : <p>No existe ningún país con ese nombre</p>
       }
     </>
   );

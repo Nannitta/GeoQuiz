@@ -62,7 +62,7 @@ const GuessFlags = () => {
         }
       </div>
       <form onSubmit={handleSubmit}>
-        <Input type={'text'} placeholder={'Escribe aquí el país'} text={'country'} handleChange={handleChange}/>
+        <Input type={'text'} placeholder={'Escribe aquí el país'} text={'country'} handleChange={handleChange} autocomplete={'off'}/>
         <SendButton/>
       </form>
       <div>

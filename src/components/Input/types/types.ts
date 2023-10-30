@@ -5,4 +5,5 @@ export type InputProps = {
   placeholder: string
   text: string
   handleChange: (event: ChangeEvent<HTMLInputElement>) => void
+  autocomplete: string
 }

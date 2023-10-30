@@ -70,7 +70,7 @@ const GuessCapitals = () => {
         }
       </div>
       <form onSubmit={handleSubmit}>
-        <Input type={'text'} placeholder={'Escribe aquí la capital'} text={'capital'} handleChange={handleChange}/>
+        <Input type={'text'} placeholder={'Escribe aquí la capital'} text={'capital'} handleChange={handleChange} autocomplete={'off'}/>
         <SendButton/>
       </form>
       <div>
