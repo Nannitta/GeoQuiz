@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { getCountryInfo } from '../services';
 import { CountryRelevantInfoFetch } from '../types/types';
+import { verifyTranslate } from '../helpers/helpers';
 
 const useCountryInfo = (countryTranslate: string | undefined) => {
   const [country, setCountry] = useState<CountryRelevantInfoFetch>();
@@ -13,6 +14,8 @@ const useCountryInfo = (countryTranslate: string | undefined) => {
         setLoading(true);
         
         if (countryTranslate) {
+          countryTranslate = await verifyTranslate(countryTranslate);
+
           const data: CountryRelevantInfoFetch = await getCountryInfo(countryTranslate);
           setCountry(data);
         }
@@ -24,7 +27,7 @@ const useCountryInfo = (countryTranslate: string | undefined) => {
     };
 
     loadCountryInfo();
-  }, []);
+  }, [countryTranslate]);
 
   return { country, error, loading};
 };

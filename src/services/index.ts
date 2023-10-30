@@ -1,16 +1,16 @@
-import filterContinent from '../helpers/helpers';
+import { filterContinent } from '../helpers/helpers';
 import { API, CapitalCountry, ContinentCountry, CountriesTranslations, CountryRelevantInfo, FlagCountry } from '../types/types';
 
 const API_URL: API = 'https://restcountries.com/v3.1/';
 
-export const translateText = async (pais: string | undefined) => {
+export const translateText = async (text: string | undefined) => {
   const response = await fetch('https://api.textcortex.com/v1/texts/translations', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
       Authorization: 'Bearer gAAAAABlOrrzOH7PLGSw5plUrv2PjprQqbVpEwTLq9m5aHfBsA_aOpIYVt59KaSzkx8wJIGFFN2xv8l-mvkh_lAJ09MbkFifJAHX5CgCfV6S8hx4AGAyGSDbaMHfwh-82y3PJ6KQ7EBL'
     },
-    body: `{"source_lang":"es","target_lang":"en","text":"${pais}"}`
+    body: `{"source_lang":"es","target_lang":"en","text":"${text}"}`
   });
 
   if (!response.ok) {
@@ -99,7 +99,7 @@ export const getListNameCountries = async () => {
 };
 
 export const getCountryInfo = async (countryTranslate: string) => {
-  const response = await fetch (`${API_URL}name/${countryTranslate}`);
+  const response = await fetch (`${API_URL}name/${countryTranslate}?fullText=true`);
 
   if (!response.ok) {
     throw new Error('Error al conectarse con el servidor');
