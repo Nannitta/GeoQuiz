@@ -5,11 +5,14 @@ import { CountryCurrencies, CountryLanguages } from '../../types/types';
 import { translateText } from '../../services';
 import { useEffect, useState, ChangeEvent, FormEvent } from 'react';
 import SendButton from '../../components/SendButton/SendButton';
-import { verifyTranslate, capitalize } from '../../helpers/helpers';
+import { verifyTranslateCountry, capitalize } from '../../helpers/helpers';
 
 const CountryInfo = () => {
   const { pais } = useParams();
   const [countryTranslate, setCountryTranslate] = useState<string>();
+  const [regionTranslate, setRegionTranlate] = useState<string>();
+  const [capitalTranslate, setCapitalTranslate] = useState<string>();
+  const [translatedCountryLanguages, setTranslatedCountryLanguages] = useState<string[]>([]);
   const {country, error, loading} = useCountryInfo(countryTranslate);
   const navigate = useNavigate();
   let searchCountry: string = '';
@@ -17,26 +20,59 @@ const CountryInfo = () => {
   useEffect(() => {
     const loadTranslate = async () => {
       if (pais) {
-        const translateData = await translateText(pais);
-        setCountryTranslate(translateData);     
+        const translateData: string = await translateText(pais, 'es', 'en');
+        setCountryTranslate(translateData);
       }
     };
     
     loadTranslate();
   }, [countryTranslate, pais]);
-    
+  
+  useEffect(() => {
+    const getCountryInfoTranslate = async () => {
+      if (country) {
+        const countryRegion = await translateText(country[0].region, 'en', 'es');
+        setRegionTranlate(countryRegion);
+        const countryCapital = await translateText(country[0].capital, 'en', 'es');
+        setCapitalTranslate(countryCapital);
+      }   
+    };
+  
+    getCountryInfoTranslate();
+  }, [country]);
+
+  useEffect(() => {
+    const getLanguages = async () => {
+      if (country) {
+        const getCountryLanguages: Array<string> = [];
+        for(const language in country[0].languages) {    
+          const languages: keyof CountryLanguages = country[0].languages[language];
+          getCountryLanguages.push(languages);             
+        }
+        const translatedLanguages = await Promise.all(
+          getCountryLanguages.map(async (language) => {
+            return await translateText(language, 'en', 'es');
+          })
+        );
+        setTranslatedCountryLanguages(translatedLanguages);
+      }
+    };
+
+    getLanguages();
+  }, [country]);
+  
   if (error) return <p>{error.message}</p>;
   if (loading) return <p>Cargando...</p>;
   
   function handleChange (event: ChangeEvent<HTMLInputElement>) {
     searchCountry = event.currentTarget.value; 
   }
-
+  
   async function handleSubmit (event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    searchCountry = await translateText(searchCountry);
+    searchCountry = await translateText(searchCountry, 'es', 'en');
     
-    searchCountry = await verifyTranslate(capitalize(searchCountry));
+    searchCountry = await verifyTranslateCountry(capitalize(searchCountry));
  
     navigate(`/${searchCountry}`);
   }
@@ -49,29 +85,18 @@ const CountryInfo = () => {
       return countryCoin;
     }
   }
-
-  function getLanguages (): Array<string> {
-    const getCountryLanguages: Array<string> = [];
-    if (country) {
-      for(const language in country[0].languages) {
-        const languages: keyof CountryLanguages = country[0].languages[language];
-        getCountryLanguages.push(languages);
-      }
-    }
-    return getCountryLanguages;
-  }
-
+ 
   return (
     <>
       <form onSubmit={handleSubmit}>
         <Input type={'text'} placeholder={'Buscador'} text={'pais'} handleChange={handleChange} autocomplete={'on'}/>
         <SendButton/>
       </form>
-      { country
+      { country && regionTranslate && capitalTranslate
         ? <article>
           <h1>{pais}</h1>
-          <h2>Capital: {country[0].capital}</h2>
-          <h3>Continente: {country[0].region}</h3>
+          <h2>Capital: {capitalTranslate}</h2>
+          <h3>Continente: {regionTranslate}</h3>
           <p>Superficie total: {country[0].area} Km<sup>2</sup></p>
           <a href={country[0].maps.googleMaps} target='_blank' rel='noreferrer'>Ver en el mapa</a>
           <img src={country[0].flags} alt="Bandera" />
@@ -80,12 +105,12 @@ const CountryInfo = () => {
           <section> 
             <p>Lengua oficial:</p>
             <ul>
-              {getLanguages().map((language, index) => {
+              {translatedCountryLanguages.map((language, index) => {           
                 return <li key={index}>{language}</li>;
-              } )}</ul>
+              })}</ul>
           </section>
         </article>
-        : <p>No existe ningún país con ese nombre</p>
+        : null
       }
     </>
   );
