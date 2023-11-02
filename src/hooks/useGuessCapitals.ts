@@ -13,7 +13,7 @@ const useGuessCapitals = () => {
         setLoading(true);
     
         const data: CountriesWithCapital = await getCountryCapital();
-        setCountries(data);
+        setCountries(data.filter((country) => country.capital.length > 0));
       } catch (err) {
         setError(error);
       } finally {
