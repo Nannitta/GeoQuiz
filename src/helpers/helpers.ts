@@ -176,9 +176,3 @@ export const capitalize = (text: string) => {
   const rest: string = text.slice(1);
   return firstLetter.toUpperCase() + rest;
 };
-
-export const verifyTranslateCapital = async (capitalTranslate: string) => {
-  if (capitalTranslate === '') {
-    capitalTranslate = '';
-  }
-};

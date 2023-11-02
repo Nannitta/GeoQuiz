@@ -2,7 +2,6 @@ import Input from '../../components/Input/Input';
 import SendButton from '../../components/SendButton/SendButton';
 import useGuessCapitals from '../../hooks/useGuessCapitals';
 import { useState, useEffect, ChangeEvent, FormEvent } from 'react';
-import { translateText } from '../../services';
 
 const GuessCapitals = () => {
   const {countries, error, loading} = useGuessCapitals();
@@ -10,7 +9,7 @@ const GuessCapitals = () => {
   const [points, setPoints] = useState<number>(0);
   const [randomCountry, setRandomCountry] = useState<number>(0);
   const [usedPositions, setUsedPositions] = useState<number[]>([]);
-
+  
   useEffect(() => {
     if (usedPositions.length === 0) {
       const allPositions: number[] = Array.from({ length: countries ? countries.length : 0 }, (_, index) => index);
@@ -34,8 +33,6 @@ const GuessCapitals = () => {
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (countries) {
-      const userAnswerTranslate = await translateText(userAnswer, 'es', 'en');
-      setUserAnswer(userAnswerTranslate);
       if (userAnswer === countries[randomCountry].capital[0].normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase()) {
         const newPoints: number = points + 1;
         setPoints(newPoints);
@@ -60,7 +57,7 @@ const GuessCapitals = () => {
       {
         countries
           ? countries.map((country, index) => {
-            if (index === randomCountry) {
+            if (index === randomCountry) {             
               return <h1 key={index}>¿Cuál es la capital de {country.name.toLocaleUpperCase()}?</h1>;
             }
           })
@@ -83,7 +80,7 @@ const GuessCapitals = () => {
       </form>
       <div>
         <p>Puntuación</p>
-        <span>{`${points} / 250`}</span>
+        <span>{`${points} / 246`}</span>
       </div>
       <button onClick={handleSurrender}>Rendirse</button>
     </main>
