@@ -15,9 +15,7 @@ export const filterContinent = (country: ContinentCountry) => {
   }
 };
 
-export const verifyTranslate = async (countryTranslate: string) => {
-  console.log(countryTranslate, 'V');
-  
+export const verifyTranslateCountry = async (countryTranslate: string) => {
   if (countryTranslate === 'Argelia') {
     countryTranslate = 'Algeria';
   }
@@ -177,4 +175,10 @@ export const capitalize = (text: string) => {
   const firstLetter: string = text.charAt(0);
   const rest: string = text.slice(1);
   return firstLetter.toUpperCase() + rest;
+};
+
+export const verifyTranslateCapital = async (capitalTranslate: string) => {
+  if (capitalTranslate === '') {
+    capitalTranslate = '';
+  }
 };

@@ -3,14 +3,16 @@ import { API, CapitalCountry, ContinentCountry, CountriesTranslations, CountryRe
 
 const API_URL: API = 'https://restcountries.com/v3.1/';
 
-export const translateText = async (text: string | undefined) => {
+export const translateText = async (text: string | undefined, sourceLang: string, targetLang: string) => {
+  const source = JSON.stringify(sourceLang);
+  const target = JSON.stringify(targetLang);
   const response = await fetch('https://api.textcortex.com/v1/texts/translations', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
       Authorization: 'Bearer gAAAAABlOrrzOH7PLGSw5plUrv2PjprQqbVpEwTLq9m5aHfBsA_aOpIYVt59KaSzkx8wJIGFFN2xv8l-mvkh_lAJ09MbkFifJAHX5CgCfV6S8hx4AGAyGSDbaMHfwh-82y3PJ6KQ7EBL'
     },
-    body: `{"source_lang":"es","target_lang":"en","text":"${text}"}`
+    body: `{"source_lang":${source},"target_lang":${target},"text":"${text}"}`
   });
 
   if (!response.ok) {

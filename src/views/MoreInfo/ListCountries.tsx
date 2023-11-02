@@ -5,7 +5,7 @@ import { ListCountries, ListCountriesFetch } from '../../types/types';
 import { Link, useNavigate } from 'react-router-dom';
 import { ChangeEvent, FormEvent } from 'react';
 import { translateText } from '../../services';
-import { capitalize, verifyTranslate } from '../../helpers/helpers';
+import { capitalize, verifyTranslateCountry } from '../../helpers/helpers';
 
 const ListOfCountries = () => {
   const {countries, error, loading} = useListContries();
@@ -22,9 +22,9 @@ const ListOfCountries = () => {
 
   async function handleSubmit (event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    searchCountry = await translateText(searchCountry);
+    searchCountry = await translateText(searchCountry, 'es', 'en');
     
-    searchCountry = await verifyTranslate(capitalize(searchCountry));
+    searchCountry = await verifyTranslateCountry(capitalize(searchCountry));
  
     navigate(`/${searchCountry}`);
   }

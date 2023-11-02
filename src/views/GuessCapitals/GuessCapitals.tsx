@@ -2,6 +2,7 @@ import Input from '../../components/Input/Input';
 import SendButton from '../../components/SendButton/SendButton';
 import useGuessCapitals from '../../hooks/useGuessCapitals';
 import { useState, useEffect, ChangeEvent, FormEvent } from 'react';
+import { translateText } from '../../services';
 
 const GuessCapitals = () => {
   const {countries, error, loading} = useGuessCapitals();
@@ -24,22 +25,29 @@ const GuessCapitals = () => {
 
   if (error) return <p>{error.message}</p>;
   if (loading) return <p>Cargando...</p>;
-
+   
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const capitalAnswer = event.currentTarget.value;
-    setUserAnswer(capitalAnswer);
+    setUserAnswer(capitalAnswer);  
   };
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (countries) {
+      const userAnswerTranslate = await translateText(userAnswer, 'es', 'en');
+      setUserAnswer(userAnswerTranslate);
       if (userAnswer === countries[randomCountry].capital[0].normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase()) {
         const newPoints: number = points + 1;
         setPoints(newPoints);
       }
+      if (userAnswer !== countries[randomCountry].capital[0].normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase()) {
+        setPoints(0);
+        setRandomCountry(Math.floor(Math.random() * 249));
+      }
     }
     const formValue = document.querySelector('form');
     formValue?.reset();
+
   };
 
   const handleSurrender = () => {
@@ -61,7 +69,7 @@ const GuessCapitals = () => {
       <div>
         {
           countries
-            ? countries.map((country, index) => {           
+            ? countries.map((country, index) => {
               if (index === randomCountry) {         
                 return <img src={country.flag} alt={country.name} key={index}/>;
               }          
