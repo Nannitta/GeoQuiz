@@ -3,7 +3,7 @@ const HomePage = () => {
     <main>
       <img src="" alt="Banderas" />
       <section>
-        <h1>Descripción de los juegos</h1>
+        <h1 className='text-prueba'>Descripción de los juegos</h1>
         <article>
           <img src="" alt="Juego banderas" />
           <p>Banderas</p>
@@ -26,7 +26,7 @@ const HomePage = () => {
         </article>
       </section>
     </main>
-  )
+  );
 };
 
 export default HomePage;
