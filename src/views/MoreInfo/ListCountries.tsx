@@ -10,7 +10,7 @@ import { capitalize, verifyTranslateCountry } from '../../helpers/helpers';
 const ListOfCountries = () => {
   const {countries, error, loading} = useListContries();
   const navigate = useNavigate();
-  const capitalLetter: Array<string> = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'M', 'N', 'P', 'R', 'S', 'T', 'U', 'V', 'W', 'Y', 'Z'];
+  const capitalLetter: Array<string> = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'P', 'R', 'S', 'T', 'U', 'V', 'W', 'Y', 'Z'];
   let searchCountry: string = '';
  
   if (error) return <p>{error.message}</p>;

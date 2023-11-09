@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+	.footer-img {
+		clip-path: polygon(100% 0, 0 100%, 100% 100%);
+	}
+}
+
+@font-face {
+	font-family: "Lilita";
+	src: url("./assets/fonts/LilitaOne-Regular.ttf");
+}
+
+@font-face {
+	font-family: "Akshar";
+	src: url("./assets/fonts/Akshar-Regular.ttf");
+}

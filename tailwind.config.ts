@@ -10,9 +10,25 @@ export default {
       'ds': '1920px'
     },
     colors: {
-      'prueba': '#ff23d6'
+      'primary-dark-color': '#101014',
+      'primary-light-color': '#F5F5FA',
+      'secondary-color': '#D81159'
     },
-    extend: {},
+    fontFamily: {
+      'lilita': ['Lilita'],
+      'akshar': ['Akshar']
+    },
+    extend: {
+      backgroundImage: {
+        'background': 'url(./src/assets/images/background.svg)'
+      },
+      backgroundColor: {
+        'bg-color': '#F5F5FA'
+      },
+      boxShadow: {
+        'bt-sh': '0 4px 8px rgba(0, 0, 0, 0.2)'
+      }
+    },
   },
   plugins: [],
 } satisfies Config;
