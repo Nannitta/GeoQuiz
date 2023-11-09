@@ -6,12 +6,15 @@ import GuessContinent from './views/GuessContinent/GuessContinent';
 import ListCountries from './views/MoreInfo/ListCountries';
 import CountryInfo from './views/MoreInfo/CountryInfo';
 import Footer from './components/Footer/Footer';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 
 function App () {
+  const location = useLocation();
+  const hideHomePage = location.pathname === '/';
+  
   return (
     <>
-      <Header/>
+      {!hideHomePage && <Header/>}
       <Routes>
         <Route path='/' element={<HomePage/>}/>
         <Route path='/adivina-la-bandera' element={<GuessFlags/>}/>
