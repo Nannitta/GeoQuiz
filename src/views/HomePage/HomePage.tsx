@@ -12,7 +12,7 @@ const HomePage = () => {
           className='w-64 mt-3'/>
       </div>
       <section
-        className='px-8 flex flex-col gap-2 mb:gap-8'>
+        className='px-8 flex flex-col gap-2 mb:gap-4'>
         <h1 
           className='font-lilita text-center text-2xl py-2 px-2'>
           ¡Desata tu genio geográfico con GeoQuiz!
