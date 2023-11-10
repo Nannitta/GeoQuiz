@@ -27,7 +27,8 @@ export default {
       },
       boxShadow: {
         'bt-sh': '0 4px 8px rgba(0, 0, 0, 0.2)',
-        'container-sh': '0px 4px 4px 0px rgba(0, 0 ,0, 0.05) inset, 0px 4px 4px 0px rgba(0, 0, 0, 0.25)'
+        'container-sh': '0px 4px 4px 0px rgba(0, 0 ,0, 0.05) inset, 0px 4px 4px 0px rgba(0, 0, 0, 0.25)',
+        'flag': '0px -4px 4px 0px rgba(0, 0, 0, 0.15), 0px 4px 4px 0px rgba(0, 0, 0, 0.15);'
       },
       gridTemplateColumns: {
         'homepage': '40% 60%'
