@@ -1,6 +1,5 @@
 import { useState, ChangeEvent, FormEvent, useEffect } from 'react';
 import Input from '../../components/Input/Input';
-import SendButton from '../../components/SendButton/SendButton';
 import useGuessFlags from '../../hooks/useGuessFlags';
 
 const GuessFlags = () => {
@@ -48,14 +47,14 @@ const GuessFlags = () => {
   };
 
   return (
-    <main>
-      <h1>¿A qué país pertenece la siguiente bandera?</h1>
-      <div>
+    <main className='h-full  text-primary-dark-color'>
+      <h1 className='font-lilita'>¿A qué país pertenece la siguiente bandera?</h1>
+      <div className='rounded-[2.5rem] w-64 h-40'>
         {
           countries
             ? countries.map((country, index) => {           
               if (index === randomCountry) {         
-                return <img src={country.flag} alt={country.name} key={index}/>;
+                return <img src={country.flag} alt={country.name} key={index} className='rounded-[2.5rem] w-64 h-48 object-cover shadow-flag'/>;
               }          
             })
             : null
@@ -63,9 +62,8 @@ const GuessFlags = () => {
       </div>
       <form onSubmit={handleSubmit}>
         <Input type={'text'} placeholder={'Escribe aquí el país'} text={'country'} handleChange={handleChange} autocomplete={'off'}/>
-        <SendButton/>
       </form>
-      <div>
+      <div className='font-akshar flex'>
         <p>Puntuación</p>
         <span>{`${points} / 250`}</span>
       </div>
