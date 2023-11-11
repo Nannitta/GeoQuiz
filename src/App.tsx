@@ -15,7 +15,7 @@ function App () {
   
   return (
     <>
-      <div style={{backgroundImage: `${bg}`}} className='h-full'>
+      <div style={{'backgroundImage': `url(${bg})`}} className='h-full bg-repeat relative z-10'>
         {!hideHomePage && <Header/>}
         <Routes>
           <Route path='/' element={<HomePage/>}/>
