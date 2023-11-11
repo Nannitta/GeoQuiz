@@ -21,7 +21,7 @@ export default {
     },
     extend: {
       backgroundImage: {
-        'background': 'url(./background.svg)'
+        'background': 'url("./src/assets/images/background.svg")'
       },
       backgroundColor: {
         'bg-color': '#F5F5FA'
