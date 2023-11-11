@@ -4,7 +4,7 @@ import Button from '../../components/Button/Button';
 
 const HomePage = () => {
   return (
-    <main className='text-primary-dark-color h-full lp:grid lp:grid-cols-homepage lp:justify-items-center lp:items-center'>
+    <main className='text-primary-dark-color h-full lp:grid lp:grid-cols-homepage-col lp:grid-rows-homepage-row lp:justify-items-center lp:items-center'>
       <div className='flex justify-center'>
         <img 
           src={logoHomePage} 
