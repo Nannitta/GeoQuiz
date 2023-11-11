@@ -17,3 +17,8 @@
 	font-family: "Akshar";
 	src: url("./assets/fonts/Akshar-Regular.ttf");
 }
+
+@font-face {
+	font-family: "Akshar-light";
+	src: url("./assets/fonts/Akshar-Light.ttf");
+}
