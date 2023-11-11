@@ -16,7 +16,8 @@ export default {
     },
     fontFamily: {
       'lilita': ['Lilita'],
-      'akshar': ['Akshar']
+      'akshar': ['Akshar'],
+      'placeholder': ['Akshar-light']
     },
     extend: {
       backgroundImage: {
