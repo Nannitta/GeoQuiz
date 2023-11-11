@@ -20,9 +20,9 @@ export default {
       'placeholder': ['Akshar-light']
     },
     extend: {
-      backgroundImage: {
+    /*       backgroundImage: {
         'background': 'url("./src/assets/images/background.svg")'
-      },
+      }, */
       backgroundColor: {
         'bg-color': '#F5F5FA'
       },
