@@ -4,8 +4,8 @@ import { MapProps } from './types';
 const Map = ({ handleAnswer }: MapProps) => {
   return (
     <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
-      width="1000px" height="1000px" viewBox="0 0 1200 1200">
-      <g>
+      width="1000px" height="1000px" viewBox="0 0 1200 1200" className='w-[350px] h-[350px] tb:w-[600px] tb:h-[600px] lp:w-[800px] lp:h-[800px]'>
+      <g className='w-[350px] h-[350px] tb:w-[600px] tb:h-[600px] lp:w-[800px] lp:h-[800px]'>
         <g>
           <g className='hover-map' id='Asia' onClick={handleAnswer}>
             <path className='Asia' fill="#E0E0E0" stroke="white" d="M1145.97,437.996c-5.124-1.505-3.313-1.505-5.124-2.704c-1.801-1.209-1.801,3.906-2.702,4.214
