@@ -48,21 +48,23 @@ const GuessContinent = () => {
   }
   
   return (
-    <main>
-      {
-        countries
-          ? countries.map((country, index) => {
-            if(index === randomCountry) {
-              return <h1 key={index}>¿En qué continente de encuentra {country.name.toLocaleUpperCase()}?</h1>;
-            }
-          })
-          : null
-      }
-      <Map handleAnswer={handleAnswer}/>
-      <div>
-        <p>Puntuación</p>
-        <span>{`${points} / 245`}</span>
-      </div>
+    <main className='h-[85%] flex flex-col justify-center items-center'>
+      <section className='flex flex-col items-center justify-center h-4/5 tb:shadow-container-sh tb:rounded-[2.5rem] tb:w-[90%] tb:bg-primary-light-color lp:w-[65%] ds:w-[50%]'>
+        {
+          countries
+            ? countries.map((country, index) => {
+              if(index === randomCountry) {
+                return <h1 key={index} className='font-lilita text-lg text-center pl-4 pr-4 h-14 tb:text-3xl tb:mt-8'>¿En qué continente de encuentra {country.name.toLocaleUpperCase()}?</h1>;
+              }
+            })
+            : null
+        }
+        <Map handleAnswer={handleAnswer}/>
+        <div className='font-akshar flex justify-center w-full gap-x-8 tb:text-2xl tb:mb-8'>
+          <p>Puntuación</p>
+          <span>{`${points} / 245`}</span>
+        </div>
+      </section>
     </main>
   );
 };

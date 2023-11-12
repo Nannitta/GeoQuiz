@@ -54,17 +54,15 @@ const GuessCapitals = () => {
   return (
     <main className='text-primary-dark-color h-[85%] flex justify-center items-center lp:h-[90%]'>
       <section className='flex flex-col items-center justify-center gap-6 h-4/5 tb:shadow-container-sh tb:rounded-[2.5rem] tb:gap-8 tb:w-[90%] tb:bg-primary-light-color lp:w-[65%] ds:w-[50%]'>
-        <h1 className='font-lilita text-lg text-center tb:text-3xl'>
-          {
-            countries
-              ? countries.map((country, index) => {
-                if (index === randomCountry) {
-                  return <h1 key={index}>¿Cuál es la capital de {country.name.toLocaleUpperCase()}?</h1>;
-                }
-              })
-              : null
-          }
-        </h1>
+        {
+          countries
+            ? countries.map((country, index) => {
+              if (index === randomCountry) {
+                return <h1 key={index} className='font-lilita text-lg text-center pl-4 pr-4 h-14 tb:text-3xl'>¿Cuál es la capital de {country.name.toLocaleUpperCase()}?</h1>;
+              }
+            })
+            : null
+        }
         <div className='rounded-[2.5rem] w-44 h-32 tb:w-60 tb:h-44'>
           {
             countries
