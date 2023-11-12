@@ -26,7 +26,7 @@ const GuessCapitals = () => {
   if (loading) return <p>Cargando...</p>;
    
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const capitalAnswer = event.currentTarget.value;
+    const capitalAnswer = event.currentTarget.value.toLowerCase().trim();
     setUserAnswer(capitalAnswer);  
   };
 
