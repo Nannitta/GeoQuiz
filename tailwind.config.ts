@@ -32,7 +32,7 @@ export default {
         'homepage-col': '40% 60%',
       },
       gridTemplateRows: {
-        'homepage-row': '1fr'
+        'homepage-row': '1fr',
       }      
     },
   },
