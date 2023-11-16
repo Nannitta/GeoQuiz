@@ -1,4 +1,5 @@
 import Input from '../../components/Input/Input';
+import Loading from '../../components/Loading/Loading';
 import useGuessCapitals from '../../hooks/useGuessCapitals';
 import { useState, useEffect, ChangeEvent, FormEvent } from 'react';
 
@@ -22,7 +23,7 @@ const GuessCapitals = () => {
   }, [points]);
 
   if (error) return <p>{error.message}</p>;
-  if (loading) return <p>Cargando...</p>;
+  if (loading) return <Loading/>;
    
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const capitalAnswer = event.currentTarget.value.toLowerCase().trim();
