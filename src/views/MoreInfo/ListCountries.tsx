@@ -64,7 +64,7 @@ const ListOfCountries = () => {
       return 0;  
     }).map((country, index) => {
       return <Link key={index} to={`/${country.name}`}>
-        <li>{country.name}</li>
+        <li className='hover:text-secondary-color'>{country.name}</li>
       </Link>;
     });    
     
@@ -76,34 +76,36 @@ const ListOfCountries = () => {
   }
 
   return (
-    <main className='mt-6'>
-      <form onSubmit={handleSubmit} className='flex justify-center items-center mb-6'>
-        <Input type={'text'} placeholder={'Buscador'} text={'pais'} handleChange={handleChange} autocomplete={'on'}/>
-      </form>
-      <div className='flex flex-wrap pl-5 pr-5 gap-2 justify-center items-center font-lilita text-4xl'>
-        {
-          capitalLetter
-            ? capitalLetter.map((letter: string, index: number) => {
-              return (
-                <div key={index}>
-                  <h2 className='hover:text-secondary-color cursor-pointer' onClick={handleClick}>{letter}</h2>
-                </div>
-              );
-            })
-            : null
+    <div className='flex flex-col ds:h-4/5'>
+      <main className='mt-6 tb:pt-10 tb:pb-[550px] tb:bg-primary-light-color tb:shadow-container-sh tb:rounded-[2.5rem] tb:mr-10 tb:ml-10 tb:flex tb:flex-col lp:w-4/5 lp:self-center lp:pb-80'>
+        <form onSubmit={handleSubmit} className='flex justify-center items-center mb-6 tb:mb-10'>
+          <Input type={'text'} placeholder={'Buscador'} text={'pais'} handleChange={handleChange} autocomplete={'on'}/>
+        </form>
+        <div className='flex flex-wrap pl-5 pr-5 gap-2 justify-center items-center font-lilita text-4xl tb:text-6xl'>
+          {
+            capitalLetter
+              ? capitalLetter.map((letter: string, index: number) => {
+                return (
+                  <div key={index}>
+                    <h2 className='hover:text-secondary-color cursor-pointer' onClick={handleClick}>{letter}</h2>
+                  </div>
+                );
+              })
+              : null
+          }
+        </div>
+        { letter
+          ? <section key={letter} id={letter}>
+            <ul className='hidden font-akshar text-lg absolute w-full gap-4 pl-6 pr-6 mt-4 pb-14 tb:pl-20 tb:pr-0 tb:w-4/5 tb:pb-0 tb:mt-8 tb:text-2xl lp:pl-6 lp:pr-6 lp:mt-10 ds:pl-10 ds:pr-10 ds:gap-6' style={{'backgroundImage': `url(${bg})`}}>
+              {
+                setFilteresCountries(letter)
+              }
+            </ul>
+          </section>
+          : null
         }
-      </div>
-      { letter
-        ? <section key={letter} id={letter}>
-          <ul className='hidden font-akshar text-lg absolute w-full gap-4 pl-6 pr-6 mt-4 pb-14' style={{'backgroundImage': `url(${bg})`}}>
-            {
-              setFilteresCountries(letter)
-            }
-          </ul>
-        </section>
-        : null
-      }
-    </main>
+      </main>
+    </div>
   );
 };
 
