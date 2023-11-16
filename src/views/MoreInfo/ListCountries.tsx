@@ -73,6 +73,14 @@ const ListOfCountries = () => {
 
   function handleClick(e: MouseEvent) {
     setLetter((e.target as HTMLElement).innerHTML);
+    const coloredLetter = document.querySelector(`#${(e.target as HTMLElement).innerHTML}`);
+    
+    const lettersContainer = document.querySelectorAll('h2');
+    lettersContainer.forEach((letterContainer) => {
+      letterContainer.classList.remove('text-secondary-color');
+    });
+
+    coloredLetter?.classList.add('text-secondary-color');
   }
 
   return (
@@ -87,7 +95,7 @@ const ListOfCountries = () => {
               ? capitalLetter.map((letter: string, index: number) => {
                 return (
                   <div key={index}>
-                    <h2 className='hover:text-secondary-color cursor-pointer' onClick={handleClick}>{letter}</h2>
+                    <h2 className='hover:text-secondary-color cursor-pointer' onClick={handleClick} id={letter}>{letter}</h2>
                   </div>
                 );
               })
