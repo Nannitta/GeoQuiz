@@ -1,6 +1,7 @@
 import { MouseEvent, useEffect, useState } from 'react';
 import useGuessContinent from '../../hooks/useGuessContinent';
 import Map from './Map/Maps';
+import Loading from '../../components/Loading/Loading';
 
 const GuessContinent = () => {
   const {countries, error, loading} = useGuessContinent();
@@ -39,7 +40,7 @@ const GuessContinent = () => {
   }, [userAnswer]);
 
   if (error) return <p>{error.message}</p>;
-  if (loading) return <p>Cargando...</p>; 
+  if (loading) return <Loading/>; 
 
   function handleAnswer (event: MouseEvent<SVGGElement>) {
     const target = event.target as SVGGElement; 

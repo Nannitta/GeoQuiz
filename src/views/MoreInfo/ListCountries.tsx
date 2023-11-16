@@ -5,7 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { ChangeEvent, FormEvent, MouseEvent, useEffect, useState } from 'react';
 import { translateText } from '../../services';
 import { capitalize, verifyTranslateCountry } from '../../helpers/helpers';
-import bg from '../../assets/images/background.svg';
+import Loading from '../../components/Loading/Loading';
 
 const ListOfCountries = () => {
   const {countries, error, loading} = useListContries();
@@ -25,7 +25,7 @@ const ListOfCountries = () => {
   }, [letter]);
 
   if (error) return <p>{error.message}</p>;
-  if (loading) return <p>Cargando...</p>;
+  if (loading) return <Loading/>;
 
   function handleChange (event: ChangeEvent<HTMLInputElement>) {
     searchCountry = event.currentTarget.value; 
@@ -96,7 +96,7 @@ const ListOfCountries = () => {
         </div>
         { letter
           ? <section key={letter} id={letter}>
-            <ul className='hidden font-akshar text-lg absolute w-full gap-4 pl-6 pr-6 mt-4 pb-14 tb:pl-20 tb:pr-0 tb:w-4/5 tb:pb-0 tb:mt-8 tb:text-2xl lp:pl-6 lp:pr-6 lp:mt-10 ds:pl-10 ds:pr-10 ds:gap-6' style={{'backgroundImage': `url(${bg})`}}>
+            <ul className='hidden font-akshar text-lg absolute w-full gap-4 pl-6 pr-6 mt-4 pb-14 tb:pl-20 tb:pr-0 tb:w-4/5 tb:pb-0 tb:mt-8 tb:text-2xl lp:pl-6 lp:pr-6 lp:mt-10 ds:pl-10 ds:pr-10 ds:gap-6'>
               {
                 setFilteresCountries(letter)
               }

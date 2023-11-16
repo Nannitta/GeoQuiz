@@ -12,7 +12,8 @@ export default {
     colors: {
       'primary-dark-color': '#101014',
       'primary-light-color': '#F5F5FA',
-      'secondary-color': '#D81159'
+      'secondary-color': '#D81159',
+      'skeleton': '#D1D5DB'
     },
     fontFamily: {
       'lilita': ['Lilita'],

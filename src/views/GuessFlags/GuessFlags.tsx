@@ -1,6 +1,7 @@
 import { useState, ChangeEvent, FormEvent, useEffect } from 'react';
 import Input from '../../components/Input/Input';
 import useGuessFlags from '../../hooks/useGuessFlags';
+import Loading from '../../components/Loading/Loading';
 
 const GuessFlags = () => {
   const { countries, error, loading } = useGuessFlags();
@@ -22,7 +23,7 @@ const GuessFlags = () => {
   }, [points]);
 
   if (error) return <p>{error.message}</p>;
-  if (loading) return <p>Cargando...</p>;
+  if (loading) return <Loading/>;
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const countryAnswer: string = event.currentTarget.value.toLowerCase().trim();
