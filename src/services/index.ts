@@ -104,13 +104,14 @@ export const getCountryInfo = async (countryTranslate: string) => {
   const response = await fetch (`${API_URL}name/${countryTranslate}?fullText=true`);
 
   if (!response.ok) {
-    throw new Error('Error al conectarse con el servidor');
+    return 'Error';
   }
 
-  const data = await response.json();
+  const data = await response.json();   
 
   const countryInfo = data.map((country: CountryRelevantInfo) => {
     return {
+      translations: country.translations,
       capital: country.capital[0],
       region: country.region,
       area: country.area,

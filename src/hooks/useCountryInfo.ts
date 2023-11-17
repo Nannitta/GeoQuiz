@@ -16,7 +16,8 @@ const useCountryInfo = (countryTranslate: string | undefined) => {
         if (countryTranslate) {
           countryTranslate = await verifyTranslateCountry(countryTranslate);
 
-          const data: CountryRelevantInfoFetch = await getCountryInfo(countryTranslate);
+          const data: CountryRelevantInfoFetch = await getCountryInfo(countryTranslate);                     
+          
           setCountry(data);
         }
       } catch (err) {

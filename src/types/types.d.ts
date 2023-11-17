@@ -64,6 +64,7 @@ type ListCountriesFetch = {
 export type ListCountries = ListCountriesFetch[]
 
 export type CountryRelevantInfo = {
+  translations: Translations,
   capital: string
   region: string
   area: number
