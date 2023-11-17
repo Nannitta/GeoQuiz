@@ -12,7 +12,7 @@ const useListContries = () => {
       try {
         setLoading(true);
 
-        const data: ListCountries = await getListNameCountries();      
+        const data: ListCountries = await getListNameCountries();             
         setCountries(data);
       } catch (err) {
         setError(error);

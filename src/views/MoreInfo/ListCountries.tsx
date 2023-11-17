@@ -9,6 +9,7 @@ import Loading from '../../components/Loading/Loading';
 
 const ListOfCountries = () => {
   const {countries, error, loading} = useListContries();
+     
   const [letter, setLetter] = useState<string | null>(null);
   const navigate = useNavigate();
   const capitalLetter: Array<string> = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'P', 'R', 'S', 'T', 'U', 'V', 'W', 'Y', 'Z'];
@@ -30,14 +31,15 @@ const ListOfCountries = () => {
   function handleChange (event: ChangeEvent<HTMLInputElement>) {
     searchCountry = event.currentTarget.value; 
   }
-
+  
   async function handleSubmit (event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
+    event.preventDefault();   
+    
     searchCountry = await translateText(searchCountry, 'es', 'en');
     
     searchCountry = await verifyTranslateCountry(capitalize(searchCountry));
- 
-    navigate(`/${searchCountry}`);
+    
+    navigate(`/pais/${searchCountry}`);
   }
 
   function setFilteresCountries (letter: string) {
@@ -63,7 +65,7 @@ const ListOfCountries = () => {
       }
       return 0;  
     }).map((country, index) => {
-      return <Link key={index} to={`/${country.name}`}>
+      return <Link key={index} to={`/pais/${country.name}`}>
         <li className='hover:text-secondary-color'>{country.name}</li>
       </Link>;
     });    

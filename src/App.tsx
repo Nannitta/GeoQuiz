@@ -23,7 +23,7 @@ function App () {
         <Route path='/adivina-la-capital' element={<GuessCapitals/>}/>
         <Route path='/adivina-el-continente' element={<GuessContinent/>}/>
         <Route path='/lista-paises' element={<ListCountries/>}/>
-        <Route path='/:pais' element={<CountryInfo/>}/>
+        <Route path='/pais/:pais' element={<CountryInfo/>}/>
       </Routes>
       <Footer/>
     </>
