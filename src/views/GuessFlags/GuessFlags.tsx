@@ -36,10 +36,14 @@ const GuessFlags = () => {
       if (userAnswer === countries[randomCountry].name) {
         const newPoints: number = points + 1;
         setPoints(newPoints);
+      } else {
+        setPoints(0);
+        setRandomCountry(Math.floor(Math.random() * 249));
       }
       const formValue = document.querySelector('form');
       formValue?.reset();
     }
+    
   };
 
   const handleSurrender = () => {

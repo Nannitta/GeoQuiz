@@ -44,14 +44,14 @@ const GuessCapitals = () => {
     }
     const formValue = document.querySelector('form');
     formValue?.reset();
-
   };
 
   const handleSurrender = () => {
     setPoints(0);
     setRandomCountry(Math.floor(Math.random() * 249));
   };
-
+ 
+  
   return (
     <main className='text-primary-dark-color h-[85%] flex justify-center items-center lp:h-[90%]'>
       <section className='flex flex-col items-center justify-center gap-6 h-4/5 tb:shadow-container-sh tb:rounded-[2.5rem] tb:gap-8 tb:w-[90%] tb:bg-primary-light-color lp:w-[65%] ds:w-[50%]'>
