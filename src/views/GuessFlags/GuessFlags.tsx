@@ -2,6 +2,7 @@ import { useState, ChangeEvent, FormEvent, useEffect } from 'react';
 import Input from '../../components/Input/Input';
 import useGuessFlags from '../../hooks/useGuessFlags';
 import Loading from '../../components/Loading/Loading';
+import { toast } from 'react-toastify';
 
 const GuessFlags = () => {
   const { countries, error, loading } = useGuessFlags();
@@ -39,6 +40,7 @@ const GuessFlags = () => {
       } else {
         setPoints(0);
         setRandomCountry(Math.floor(Math.random() * 249));
+        toast.error(`Ooops! La respuesta era ${countries[randomCountry].name}`);
       }
       const formValue = document.querySelector('form');
       formValue?.reset();
