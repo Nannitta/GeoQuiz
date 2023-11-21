@@ -33,12 +33,14 @@ export const getCountryAndFlag = async () => {
 
   const data = await response.json();
   
-  const countries = data.map((country: FlagCountry) => {
+  const countries = data.filter((country: FlagCountry) => country.translations.spa.common !== 'Saint Martin').map((country: FlagCountry) => {
     return {
       flag: country.flags.svg,
       name: country.translations.spa.common.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase()
     };
   });
+  
+  console.log(countries);
   
   return countries;
 };
