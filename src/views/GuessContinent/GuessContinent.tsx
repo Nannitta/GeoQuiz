@@ -2,6 +2,7 @@ import { MouseEvent, useEffect, useState } from 'react';
 import useGuessContinent from '../../hooks/useGuessContinent';
 import Map from './Map/Maps';
 import Loading from '../../components/Loading/Loading';
+import { toast } from 'react-toastify';
 
 const GuessContinent = () => {
   const {countries, error, loading} = useGuessContinent();
@@ -32,6 +33,7 @@ const GuessContinent = () => {
         } else {
           setPoints(0);
           setUserAnswer('');
+          toast.error(`Has fallado! La respuesta era ${countries[randomCountry].continent}`);
         }
       }
     };

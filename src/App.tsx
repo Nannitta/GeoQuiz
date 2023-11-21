@@ -8,6 +8,7 @@ import CountryInfo from './views/MoreInfo/CountryInfo';
 import Footer from './components/Footer/Footer';
 import NotFound from './views/NotFound/NotFound';
 import { Routes, Route, useLocation } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 
 function App () {
   const location = useLocation();
@@ -15,6 +16,18 @@ function App () {
   
   return (
     <>
+      <ToastContainer
+        position="bottom-center"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover={false}
+        theme="light"
+      />
       {!hideHomePage && <Header/>}
       <Routes>
         <Route path='/' element={<HomePage/>}/>

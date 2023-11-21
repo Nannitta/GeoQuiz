@@ -2,6 +2,7 @@ import Input from '../../components/Input/Input';
 import Loading from '../../components/Loading/Loading';
 import useGuessCapitals from '../../hooks/useGuessCapitals';
 import { useState, useEffect, ChangeEvent, FormEvent } from 'react';
+import { toast } from 'react-toastify';
 
 const GuessCapitals = () => {
   const {countries, error, loading} = useGuessCapitals();
@@ -9,6 +10,14 @@ const GuessCapitals = () => {
   const [points, setPoints] = useState<number>(0);
   const [randomCountry, setRandomCountry] = useState<number>(0);
   const [usedPositions, setUsedPositions] = useState<number[]>([]);
+  const [infoToast, setInfoToast] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (!infoToast) {
+      toast.info('¡Dificultad extra! La respuesta debe ser en inglés');
+      setInfoToast(true);
+    }
+  }, [infoToast]);
   
   useEffect(() => {
     if (usedPositions.length === 0) {
@@ -24,7 +33,7 @@ const GuessCapitals = () => {
 
   if (error) return <p>{error.message}</p>;
   if (loading) return <Loading/>;
-   
+
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const capitalAnswer = event.currentTarget.value.toLowerCase().trim();
     setUserAnswer(capitalAnswer);  
@@ -40,6 +49,7 @@ const GuessCapitals = () => {
       if (userAnswer !== countries[randomCountry].capital[0].normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase()) {
         setPoints(0);
         setRandomCountry(Math.floor(Math.random() * 249));
+        toast.error(`Vaya, la respuesta era ${countries[randomCountry].capital[0]}!`);
       }
     }
     const formValue = document.querySelector('form');
