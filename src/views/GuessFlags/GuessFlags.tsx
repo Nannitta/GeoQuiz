@@ -20,7 +20,7 @@ const GuessFlags = () => {
       setUsedPositions((prevUsedPosition) => prevUsedPosition.filter((position) => position !== newPosition));
       setRandomCountry(newPosition);
     }
-    setRandomCountry(Math.floor(Math.random() * 250));
+    setRandomCountry(Math.floor(Math.random() * 249));
   }, [points]);
   
   if (error) return <p>{error.message}</p>;
@@ -39,7 +39,7 @@ const GuessFlags = () => {
         setPoints(newPoints);
       } else {
         setPoints(0);
-        setRandomCountry(Math.floor(Math.random() * 250));
+        setRandomCountry(Math.floor(Math.random() * 249));
         toast.error(`Ooops! La respuesta era ${countries[randomCountry].name}`);
       }
       const formValue = document.querySelector('form');
@@ -50,7 +50,7 @@ const GuessFlags = () => {
 
   const handleSurrender = () => {
     setPoints(0);
-    setRandomCountry(Math.floor(Math.random() * 250));
+    setRandomCountry(Math.floor(Math.random() * 249));
   };
 
   return (
