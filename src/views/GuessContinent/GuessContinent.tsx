@@ -20,7 +20,7 @@ const GuessContinent = () => {
       setUsedPositions((prevUsedPosition) => prevUsedPosition.filter((position) => position !== newPosition));
       setRandomCountry(newPosition);
     }
-    setRandomCountry(Math.floor(Math.random() * 249));
+    setRandomCountry(Math.floor(Math.random() * 245));
   }, [points]);
    
   useEffect(() => {
@@ -52,7 +52,7 @@ const GuessContinent = () => {
 
   function handleSurrender () {
     setPoints(0);
-    setRandomCountry(Math.floor(Math.random() * 249));
+    setRandomCountry(Math.floor(Math.random() * 245));
   }
   
   return (

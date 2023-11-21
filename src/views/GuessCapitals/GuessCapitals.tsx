@@ -18,7 +18,7 @@ const GuessCapitals = () => {
       setInfoToast(true);
     }
   }, [infoToast]);
-  
+   
   useEffect(() => {
     if (usedPositions.length === 0) {
       const allPositions: number[] = Array.from({ length: countries ? countries.length : 0 }, (_, index) => index);
@@ -28,7 +28,7 @@ const GuessCapitals = () => {
       setUsedPositions((prevUsedPosition) => prevUsedPosition.filter((position) => position !== newPosition));
       setRandomCountry(newPosition);
     }
-    setRandomCountry(Math.floor(Math.random() * 249));
+    setRandomCountry(Math.floor(Math.random() * 246));
   }, [points]);
 
   if (error) return <p>{error.message}</p>;
@@ -48,7 +48,7 @@ const GuessCapitals = () => {
       }
       if (userAnswer !== countries[randomCountry].capital[0].normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase()) {
         setPoints(0);
-        setRandomCountry(Math.floor(Math.random() * 249));
+        setRandomCountry(Math.floor(Math.random() * 246));
         toast.error(`Vaya, la respuesta era ${countries[randomCountry].capital[0]}!`);
       }
     }
@@ -58,7 +58,7 @@ const GuessCapitals = () => {
 
   const handleSurrender = () => {
     setPoints(0);
-    setRandomCountry(Math.floor(Math.random() * 249));
+    setRandomCountry(Math.floor(Math.random() * 246));
   };
  
   
