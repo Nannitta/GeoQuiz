@@ -18,38 +18,38 @@ const HomePage = () => {
           ¡Desata tu genio geográfico con GeoQuiz!
         </h1>
         <article className='flex flex-col lp:px-8'>
-          <h2 
+          <p 
             className='font-akshar tb:text-2xl'>
-            Adivina el país a partir de su bandera y conquista el mundo en un juego lleno de diversión y desafíos 🚩
-          </h2>
+            Adivina el <span className='font-highlight'>país</span> a partir de su bandera y conquista el mundo en un juego lleno de diversión y desafíos 🚩
+          </p>
           <Link to={'/adivina-la-bandera'} className='self-end'>
             <Button text={'Jugar'}></Button>
           </Link>
         </article>
         <article className='flex flex-col lp:px-8'>
-          <h2 
+          <p 
             className='font-akshar tb:text-2xl'>
-            Descubre el mundo adivinando la capital de cada país con su bandera. ¡Conviértete en el maestro de la geografía en segundos! 🏛️
-          </h2>
+            Descubre el mundo adivinando la <span className='font-highlight'>capital</span> de cada país con su bandera. ¡Conviértete en el maestro de la geografía en segundos! 🏛️
+          </p>
           <Link to={'/adivina-la-capital'} className='self-end'>
             <Button text={'Jugar'}></Button>
           </Link>
         </article>
         <article className='flex flex-col lp:px-8'>
-          <h2 
+          <p 
             className='font-akshar tb:text-2xl'>
-            Adivina en qué continente se encuentra cada país. Desafía tu conocimiento geográfico y conquista el mundo, ¡todo en un abrir y cerrar de ojos! 🌍
-          </h2>
+            Adivina en qué <span className='font-highlight'>continente</span> se encuentra cada país. Desafía tu conocimiento geográfico y conquista el mundo, ¡todo en un abrir y cerrar de ojos! 🌍
+          </p>
           <Link to={'/adivina-el-continente'} className='self-end'>
             <Button text={'Jugar'}></Button>
           </Link>
         </article>
-        <p 
+        <h2 
           className='font-lilita text-center tb:text-3xl tb:mt-6 lp:mt-4'>
           Para aprender más visita la
           <Link to={'/lista-paises'}>
             <span className='text-secondary-color  pl-1'>GeoWiki</span>
-          </Link></p>
+          </Link></h2>
       </section>
     </main>
   );

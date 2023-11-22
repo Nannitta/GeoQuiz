@@ -18,7 +18,8 @@ export default {
     fontFamily: {
       'lilita': ['Lilita'],
       'akshar': ['Akshar'],
-      'placeholder': ['Akshar-light']
+      'placeholder': ['Akshar-light'],
+      'highlight': ['Akshar-bold']
     },
     extend: {
       backgroundColor: {
