@@ -64,10 +64,13 @@ const GuessCapitals = () => {
   
   return (
     <main className='text-primary-dark-color h-[85%] flex justify-center items-center lp:h-[90%]'>
-      <section className='flex flex-col items-center justify-center gap-6 h-4/5 tb:shadow-container-sh tb:rounded-[2.5rem] tb:gap-8 tb:w-[90%] tb:bg-primary-light-color lp:w-[65%] ds:w-[50%]'>
+      <section className='flex flex-col items-center justify-center gap-6 h-4/5 tb:rounded-[2.5rem] tb:gap-8 tb:w-[90%] lp:w-[65%] ds:w-[50%]'>
         {
           countries
             ? countries.map((country, index) => {
+              if (country.name.toLocaleUpperCase() === 'ESPANA') {
+                country.name = 'ESPAÑA';
+              }
               if (index === randomCountry) {
                 return <h1 key={index} className='font-lilita text-lg text-center pl-4 pr-4 h-14 tb:text-3xl'>¿Cuál es la capital de {country.name.toLocaleUpperCase()}?</h1>;
               }

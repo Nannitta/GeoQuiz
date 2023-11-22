@@ -101,7 +101,7 @@ const CountryInfo = () => {
   return (
     <>
       { matchSearch === true
-        ? <main className='tb:bg-primary-light-color tb:shadow-container-sh tb:rounded-[2.5rem] tb:flex tb:flex-col tb:items-center tb:ml-12 tb:mr-12 tb:mt-6 lp:mr-48 lp:ml-48 ds:mr-96 ds:ml-96 ds:h-4/5'>
+        ? <main className='tb:rounded-[2.5rem] tb:flex tb:flex-col tb:items-center tb:ml-12 tb:mr-12 tb:mt-6 lp:mr-48 lp:ml-48 ds:mr-96 ds:ml-96 ds:h-4/5'>
           <form onSubmit={handleSubmit} className='flex justify-center mt-4 mb-4'>
             <Input type={'text'} placeholder={'Buscador'} text={'pais'} handleChange={handleChange} autocomplete={'on'}/>
           </form>

@@ -87,7 +87,7 @@ const ListOfCountries = () => {
 
   return (
     <div className='flex flex-col ds:h-4/5'>
-      <main className='mt-6 tb:pt-10 tb:pb-[550px] tb:bg-primary-light-color tb:shadow-container-sh tb:rounded-[2.5rem] tb:mr-10 tb:ml-10 tb:flex tb:flex-col lp:w-4/5 lp:self-center lp:pb-80'>
+      <main className='mt-6 tb:pt-10 tb:pb-[550px]tb:rounded-[2.5rem] tb:mr-10 tb:ml-10 tb:flex tb:flex-col lp:w-4/5 lp:self-center lp:pb-80'>
         <form onSubmit={handleSubmit} className='flex justify-center items-center mb-6 tb:mb-10'>
           <Input type={'text'} placeholder={'Buscador'} text={'pais'} handleChange={handleChange} autocomplete={'on'}/>
         </form>

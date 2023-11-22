@@ -40,8 +40,6 @@ export const getCountryAndFlag = async () => {
     };
   });
   
-  console.log(countries);
-  
   return countries;
 };
 
