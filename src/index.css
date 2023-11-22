@@ -12,27 +12,27 @@
 @font-face {
 	font-family: "Lilita";
 	src: url("./assets/fonts/LilitaOne-Regular.ttf");
+	font-display: swap;
 }
 
 @font-face {
 	font-family: "Akshar";
 	src: url("./assets/fonts/Akshar-Regular.ttf");
+	font-display: swap;
 }
 
 @font-face {
 	font-family: "Akshar-light";
 	src: url("./assets/fonts/Akshar-Light.ttf");
+	font-display: swap;
 }
 
 @font-face {
 	font-family: "Akshar-bold";
 	src: url("./assets/fonts/Akshar-Bold.ttf");
+	font-display: swap;
 }
 
 .Toastify__toast-body {
 	font-family: "Akshar";
 }
-
-/* body {
-	color: #101014ab;
-} */
