@@ -53,14 +53,17 @@ const GuessContinent = () => {
   function handleSurrender () {
     setPoints(0);
     setRandomCountry(Math.floor(Math.random() * 245));
-  }
+  } 
   
   return (
     <main className='h-[85%] flex flex-col justify-center items-center'>
-      <section className='flex flex-col items-center justify-center h-4/5 tb:shadow-container-sh tb:rounded-[2.5rem] tb:w-[90%] tb:bg-primary-light-color lp:w-[65%] ds:w-[50%]'>
+      <section className='flex flex-col items-center justify-center h-4/5 tb:rounded-[2.5rem] tb:w-[90%]lp:w-[65%] ds:w-[50%]'>
         {
           countries
             ? countries.map((country, index) => {
+              if (country.name === 'espana') {
+                country.name = 'ESPAÑA';
+              }
               if(index === randomCountry) {
                 return <h1 key={index} className='font-lilita text-lg text-center pl-4 pr-4 h-14 tb:text-3xl tb:mt-8'>¿En qué continente de encuentra {country.name.toLocaleUpperCase()}?</h1>;
               }

@@ -34,6 +34,9 @@ const GuessFlags = () => {
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (countries) {
+      if (countries[randomCountry].name === 'espana') {
+        countries[randomCountry].name = 'españa';
+      }
       if (userAnswer === countries[randomCountry].name) {
         const newPoints: number = points + 1;
         setPoints(newPoints);
@@ -55,7 +58,7 @@ const GuessFlags = () => {
 
   return (
     <main className='text-primary-dark-color h-[85%] flex justify-center items-center lp:h-[90%]'>
-      <section className='flex flex-col items-center justify-center gap-6 h-4/5 tb:shadow-container-sh tb:rounded-[2.5rem] tb:gap-8 tb:w-[90%] tb:bg-primary-light-color lp:w-[65%] ds:w-[50%]'>
+      <section className='flex flex-col items-center justify-center gap-6 h-4/5 tb:rounded-[2.5rem] tb:gap-8 tb:w-[90%]lp:w-[65%] ds:w-[50%]'>
         <h1 className='font-lilita text-lg text-center pl-4 pr-4 tb:text-3xl'>¿A qué país pertenece la siguiente bandera?</h1>
         <div className='rounded-[2.5rem] w-44 h-32 tb:w-60 tb:h-44'>
           {

@@ -12,7 +12,7 @@ const HomePage = () => {
           className='w-64 mt-3 tb:mt-6 tb:mb-6 lp:mb-2 lp:object-contain lp:w-[500px] lp:mt-0'/>
       </div>
       <section
-        className='px-8 flex flex-col gap-2 mb:gap-4 tb:px-[7rem] tb:gap-8 lp:p-0 lp:gap-2 lp:justify-center lp:shadow-container-sh lp:rounded-[2.5rem] lp:w-4/5 lp:h-[95%] lp:border-none lp:bg-primary-light-color ds:px-16 ds:gap-10 ds:h-[85%]'>
+        className='px-8 flex flex-col gap-2 mb:gap-4 tb:px-[7rem] tb:gap-8 lp:p-0 lp:gap-2 lp:justify-center lp:rounded-[2.5rem] lp:w-4/5 lp:h-[95%] lp:border-none ds:px-16 ds:gap-10 ds:h-[85%]'>
         <h1 
           className='font-lilita text-center text-2xl py-2 px-2 tb:text-4xl tb:mb-6 lp:mb-4 lp:text-5xl lp:px-8'>
           ¡Desata tu genio geográfico con GeoQuiz!
