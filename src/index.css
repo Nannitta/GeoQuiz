@@ -24,6 +24,11 @@
 	src: url("./assets/fonts/Akshar-Light.ttf");
 }
 
+@font-face {
+	font-family: "Akshar-bold";
+	src: url("./assets/fonts/Akshar-Bold.ttf");
+}
+
 .Toastify__toast-body {
 	font-family: "Akshar";
 }

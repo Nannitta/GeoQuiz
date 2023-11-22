@@ -6,7 +6,7 @@ const Footer = () => {
     <footer>
       <div 
         className='bg-primary-dark-color fixed bottom-0 right-0 clip footer-img w-[64px] h-[64px] tb:w-[96px] tb:h-[96px]'>
-        <NavLink to={'https://github.com/Nannitta'} target='_blank'>
+        <NavLink to={'https://github.com/Nannitta/GeoQuiz'} target='_blank'>
           <img 
             src={github} 
             alt="GitHub" 
